@@ -42,6 +42,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shrinecompose.ui.theme.ShrineComposeTheme
 import com.example.shrinecompose.ui.theme.ShrineScrimColor
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.rememberInsetsPaddingValues
+import com.google.accompanist.insets.ui.TopAppBar
 import kotlinx.coroutines.launch
 
 @Composable
@@ -101,6 +104,9 @@ private fun ShrineTopAppBar(
     onBackdropReveal: (Boolean) -> Unit = {}
 ) {
     TopAppBar(
+        contentPadding = rememberInsetsPaddingValues(
+            insets = LocalWindowInsets.current.statusBars,
+            applyBottom = false),
         title = {
             val density = LocalDensity.current
 

@@ -44,6 +44,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.example.shrinecompose.ui.theme.ShrineComposeTheme
+import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.insets.statusBarsPadding
 import kotlin.math.min
 
 @Composable
@@ -158,6 +160,7 @@ fun ExpandedCart(
     onCollapse: () -> Unit = {}
 ) {
     Surface(
+        modifier = Modifier.statusBarsPadding(),
         color = MaterialTheme.colors.secondary
     ) {
         Column(
@@ -387,7 +390,9 @@ fun CartBottomSheet(
                 }
             }
             cartTransition.AnimatedVisibility(
-                modifier = Modifier.align(Alignment.BottomCenter),
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .navigationBarsPadding(),
                 visible = { it == CartBottomSheetState.Expanded },
                 enter = fadeIn(animationSpec = tween(durationMillis = 150, delayMillis = 150, easing = LinearEasing)) +
                     scaleIn(animationSpec = tween(durationMillis = 250, delayMillis = 250, easing = LinearOutSlowInEasing), initialScale = 0.8f),
